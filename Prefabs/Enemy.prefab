@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 8056657064587026435}
   - component: {fileID: 6686614278366640485}
   - component: {fileID: 1273105774933251378}
-  - component: {fileID: 5338242775523129155}
   - component: {fileID: 1539124346838266848}
-  - component: {fileID: 8786771431643867952}
-  - component: {fileID: 6774824992546034467}
+  - component: {fileID: 5634565629893675541}
+  - component: {fileID: 8767140397344371223}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -144,18 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageAmount: 10
---- !u!114 &5338242775523129155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224400924879939046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb225869473084d468af473c9fbe2118, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1539124346838266848
 Animator:
   serializedVersion: 5
@@ -177,7 +164,53 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8786771431643867952
+--- !u!114 &5634565629893675541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224400924879939046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47a1667391b25442ac8d49ae7edd600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 8cfbff0eb305b394697d174ef5db1da1, type: 2}
+  OnDied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8767140397344371223}
+        m_TargetAssemblyTypeName: EnemyDestroyController, Assembly-CSharp
+        m_MethodName: DestroyEnemy
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1539124346838266848}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.3
+          m_StringArgument: OnDied
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8767140397344371223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,53 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb225869473084d468af473c9fbe2118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6774824992546034467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224400924879939046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4aa44cda48badf44b7723901bdbfe4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentHealth: 0
-  OnDied:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1539124346838266848}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.2
-          m_StringArgument: OnDied
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5338242775523129155}
-        m_TargetAssemblyTypeName: EnemyDestroyController, Assembly-CSharp
-        m_MethodName: DestroyEnemy
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.2
-          m_StringArgument: OnDied
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  data: {fileID: 11400000, guid: a29bdbd173f12d64aa3eeca81b5673b0, type: 2}
+  data: {fileID: 11400000, guid: 98efc629a74edba4a9aba3e75aa54d09, type: 2}
+  itemHp: {fileID: 2915699888193987603, guid: b5a4ede6e7da1674fa45990625786ba9, type: 3}
+  itemSpeed: {fileID: 2350799525209847470, guid: c8836e7b13e93984ab5d0ff5a1d062fc, type: 3}
 --- !u!1 &7594232512237092649
 GameObject:
   m_ObjectHideFlags: 0

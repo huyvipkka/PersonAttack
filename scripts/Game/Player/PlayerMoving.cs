@@ -1,26 +1,23 @@
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMoving : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed;
-
-    [SerializeField]
-    private float _rotationSpeed;
-
-    [SerializeField]
-    private float _screenBorder;
-
+    [SerializeField] public PlayerData data;
+    public float _speed;
+    private float boostSpeed;
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
     private Vector2 _smoothedMovementInput;
     private Vector2 _movementInputSmoothVelocity;
     private Camera _camera;
+    public Coroutine boostCoroutine;
 
-    private void Awake()
+    private void Start()
     {
+        _speed = data.speed;
         _rigidbody = GetComponent<Rigidbody2D>();
         _camera = Camera.main;
     }
@@ -40,25 +37,6 @@ public class PlayerMoving : MonoBehaviour
                     0.1f);
 
         _rigidbody.velocity = _smoothedMovementInput * _speed;
-
-        PreventPlayerGoingOffScreen();
-    }
-
-    private void PreventPlayerGoingOffScreen()
-    {
-        Vector2 screenPosition = _camera.WorldToScreenPoint(transform.position);
-
-        if ((screenPosition.x < _screenBorder && _rigidbody.velocity.x < 0) ||
-            (screenPosition.x > _camera.pixelWidth - _screenBorder && _rigidbody.velocity.x > 0))
-        {
-            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
-        }
-
-        if ((screenPosition.y < _screenBorder && _rigidbody.velocity.y < 0) ||
-            (screenPosition.y > _camera.pixelHeight - _screenBorder && _rigidbody.velocity.y > 0))
-        {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-        }
     }
 
     private void RotateInDirectionOfInput()
@@ -73,5 +51,21 @@ public class PlayerMoving : MonoBehaviour
     private void OnMove(InputValue inputValue)
     {
         _movementInput = inputValue.Get<Vector2>();
+    }
+
+    public void BoostSpeed(float boostPercent, float time)
+    {
+        if (boostCoroutine != null)
+        {
+            StopCoroutine(boostCoroutine);
+            _speed = data.speed;
+        }
+        boostCoroutine = StartCoroutine(Boost(boostPercent, time));
+    }
+    private IEnumerator Boost(float boostPercent, float time)
+    {
+        _speed *= 1 + boostPercent;
+        yield return new WaitForSeconds(time);
+        _speed = data.speed;
     }
 }

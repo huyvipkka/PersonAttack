@@ -5,10 +5,14 @@ using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] protected float _currentHealth;
-
-    protected float _maximumHealth;
-
+    [SerializeField] HealthData data;
+    [SerializeField] protected float _currentHealth { get; set; }
+    [SerializeField] protected float _maximumHealth { get; set; }
+    private void Start()
+    {
+        _maximumHealth = data.HpMax;
+        _currentHealth = _maximumHealth;
+    }
     public float RemainingHealthPercentage
     {
         get
