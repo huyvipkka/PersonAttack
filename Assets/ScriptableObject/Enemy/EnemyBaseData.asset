@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2416725fb02c444697c7b36ec615f25, type: 3}
+  m_Name: EnemyBaseData
+  m_EditorClassIdentifier: 
+  hp: 10
+  speed: 2
+  speedBoost: 3
+  atk: 10
+  cooldownAttack: 3
+  RecoveryHpDropRate: 0.3
+  BoostSpeedDropRate: 0.3
+  xuDropRate: 0.3
+  xuValue: 10
