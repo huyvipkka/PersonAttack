@@ -1,9 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class HealthBarUI : MonoBehaviour
 {
-    [SerializeField]
-    private UnityEngine.UI.Image _healthBarForegroundImage;
+    [SerializeField] private UnityEngine.UI.Image _healthBarForegroundImage;
     private void Start()
     {
         GameEvent.onHpPlayerChange += health => UpdateHealthBar(health);

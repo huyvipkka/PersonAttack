@@ -7,7 +7,7 @@ public class EnemyCheckTarget : MonoBehaviour {
         controller = GetComponentInParent<EnemyController>();
     }
     private void OnTriggerStay2D(Collider2D other) {
-        if(other.gameObject.name == controller.target.name){
+        if(other.gameObject.CompareTag("Player")){
             Vector3 dir = (other.transform.position - transform.position).normalized;
             float distanceToPlayer = Vector3.Distance(transform.position, other.transform.position);
 

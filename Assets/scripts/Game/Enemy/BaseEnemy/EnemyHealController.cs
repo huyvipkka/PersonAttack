@@ -6,7 +6,7 @@ public class EnemyHealController : MonoBehaviour {
     [SerializeField] private float _maximumHealth { get; set; }
     private void Start()
     {
-        _maximumHealth = GetComponent<EnemyController>().data.hp;
+        _maximumHealth = GetComponent<EnemyController>().data.hp * GameManager.Instance.data.doKho;
         _currentHealth = _maximumHealth;
     }
     public float GetPercentHp() => _currentHealth/_maximumHealth; 

@@ -13,7 +13,7 @@ public class Xu : MonoBehaviour, ICollectable
     {
         GameManager.Instance.data.xu += value;
         gameObject.SetActive(false);
-        Debug.Log($"Xu: {GameManager.Instance.data.xu}");
+        GameEvent.onCoinChange?.Invoke();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

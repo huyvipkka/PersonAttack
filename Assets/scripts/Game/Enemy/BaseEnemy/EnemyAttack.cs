@@ -12,10 +12,10 @@ public class EnemyAttack : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(timer < controller.data.cooldownAttack) timer += Time.deltaTime;
-        else if (collision.gameObject.name == controller.target.name)
+        else if (collision.gameObject.CompareTag("Player"))
         {
             var healthController = collision.gameObject.GetComponent<HealthController>();
-            healthController.TakeDamage(controller.data.atk);
+            healthController.TakeDamage(controller.data.atk * GameManager.Instance.data.doKho);
             GameEvent.onHpPlayerChange?.Invoke(healthController);
             timer = 0;
         }

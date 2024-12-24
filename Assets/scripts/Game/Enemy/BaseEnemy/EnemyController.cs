@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour {
         }
         if(Random.Range(0f, 1) <= data.xuDropRate){
             GameObject obj = PoolManager.Instance.GetFromPool(xu);
-            obj.GetComponent<Xu>().value = data.xuValue;
+            obj.GetComponent<Xu>().value = data.xuValue * GameManager.Instance.data.doKho;
             obj.transform.position = transform.position + (0.2f * Vector3.up);
         }
     }

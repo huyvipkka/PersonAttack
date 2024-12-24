@@ -4,8 +4,8 @@ using UnityEngine.Events;
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private PlayerData data;
-    [SerializeField] protected float _currentHealth { get; set; }
-    [SerializeField] protected float _maximumHealth { get; set; }
+    [SerializeField] public float _currentHealth { get; set; }
+    [SerializeField] public float _maximumHealth { get; set; }
     private void Start()
     {
         _maximumHealth = data.hpMax;

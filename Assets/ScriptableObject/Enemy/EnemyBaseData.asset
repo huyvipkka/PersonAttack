@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2416725fb02c444697c7b36ec615f25, type: 3}
   m_Name: EnemyBaseData
   m_EditorClassIdentifier: 
-  hp: 10
-  speed: 2
-  speedBoost: 3
+  hp: 20
+  speed: 1
+  speedBoost: 2
   atk: 10
-  cooldownAttack: 3
+  cooldownAttack: 1
   RecoveryHpDropRate: 0.3
   BoostSpeedDropRate: 0.3
   xuDropRate: 0.3
-  xuValue: 10
+  xuValue: 5
